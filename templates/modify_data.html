@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Crop Data - Fresh Basket</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/store_data.css') }}">
+    <script src="{{ url_for('static', filename='scripts/store_data.js') }}"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://wallpaperaccess.com/full/3830826.jpg') no-repeat center/cover;
+            margin: 0;
+            padding: 0;
+        }
+    
+        .container {
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            margin: 50px auto;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+    
+        h1 {
+            font-family: 'Roboto', Arial;
+            color: #333;
+            font-size: 28px;
+        }
+    
+        .form-group {
+            text-align: left; /* Align labels and inputs to the left */
+            margin-bottom: 15px; /* Add consistent spacing between form fields */
+        }
+    
+        label {
+            display: block; /* Make labels block-level elements for proper alignment */
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 14px;
+            color: #333;
+        }
+    
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+    
+        input:focus {
+            outline: none;
+            border-color: #666;
+        }
+    
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    
+        button:hover {
+            background-color: #45a049;
+        }
+    
+        .flash-message {
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+    
+        .flash-message.success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+    
+        .flash-message.danger {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>   
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1>Modify Your Data</h1>
+        <form method="POST">
+            <!-- User Information -->
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ user_data['name'] }}" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" value="{{ user_data['email'] }}" required>
+            </div>
+            <div class="form-group">
+                <label for="current_password">Current Password</label>
+                <input type="password" class="form-control" id="current_password" name="current_password" placeholder="Enter current password" required>
+            </div>
+            <div class="form-group">
+                <label for="new_password">New Password</label>
+                <input type="password" class="form-control" id="new_password" name="new_password" placeholder="Enter new password (optional)">
+            </div>
+            <div class="form-group">
+                <label for="crop">Crop</label>
+                <input type="text" class="form-control" id="crop" name="crop" value="{{ farmer_data['crop'] }}" required>
+            </div>
+            <div class="form-group">
+                <label for="crop_year">Crop Year</label>
+                <input type="number" class="form-control" id="crop_year" name="crop_year" value="{{ farmer_data['crop_year'] }}" required>
+            </div>
+            <div class="form-group">
+                <label for="area">Area (in hectares)</label>
+                <input type="number" step="0.01" class="form-control" id="area" name="area" value="{{ farmer_data['area'] }}" required>
+            </div>
+            <div class="form-group">
+                <label for="production">Production (in tons)</label>
+                <input type="number" step="0.01" class="form-control" id="production" name="production" value="{{ farmer_data['production'] }}" required>
+            </div>
+            <div class="form-group">
+                <label for="yield_per_hectare">Yield per Hectare (in tons)</label>
+                <input type="number" step="0.01" class="form-control" id="yield_per_hectare" name="yield_per_hectare" value="{{ farmer_data['yield_per_hectare'] }}" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+    </div>
+</body>
+</html>

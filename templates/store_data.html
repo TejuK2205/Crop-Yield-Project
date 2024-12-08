@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Crop Data - Fresh Basket</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/store_data.css') }}">
+    <script src="{{ url_for('static', filename='scripts/store_data.js') }}"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://wallpaperaccess.com/full/3830826.jpg') no-repeat center/cover;
+            margin: 0;
+            padding: 0;
+        }
+    
+        .container {
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            margin: 50px auto;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+    
+        h1 {
+            font-family: 'Roboto', Arial;
+            color: #333;
+            font-size: 28px;
+        }
+    
+        input[type="text"],
+        input[type="number"],
+        select,
+        button {
+            width: 100%;
+            padding: 8px; /* Reduce padding to make input smaller */
+            margin: 8px 0;
+            font-size: 14px; /* Smaller font size */
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+    
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        select:focus,
+        button:hover {
+            outline: none;
+            border-color: #666;
+        }
+    
+        button {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            border: none;
+        }
+    
+        button:hover {
+            background-color: #45a049;
+        }
+    
+        .flash-message {
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+    
+        .flash-message.success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+    
+        .flash-message.danger {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>    
+</head>
+
+<body>
+
+    <header>
+        <a href="{{ url_for('dashboard') }}" class="back-button">&larr; Back</a>
+    </header>
+
+    <div class="container">
+        <h1>Store Crop Data</h1>
+
+        <form id="store-data-form" method="POST" action="{{ url_for('store_data') }}">
+
+            <!-- State Name -->
+            <input type="text" id="state_name" name="state_name" placeholder="Enter State Name" required>
+
+            <!-- District Name -->
+            <input type="text" id="district_name" name="district_name" placeholder="Enter District Name" required>
+
+            <!-- Crop Year -->
+            <input type="number" id="crop_year" name="crop_year" placeholder="Enter Crop Year" required>
+
+            <!-- Season -->
+            <select id="season" name="season" required>
+                <option value="Kharif">Kharif</option>
+                <option value="Rabi">Rabi</option>
+                <option value="Summer">Summer</option>
+            </select>
+
+            <!-- Crop -->
+            <input type="text" id="crop" name="crop" placeholder="Enter Crop Name" required>
+
+            <!-- Area (in acres or hectares) -->
+            <input type="number" id="area" name="area" placeholder="Enter Area (in acres/hectares)" step="any" required>
+
+            <!-- Production (in tons) -->
+            <input type="number" id="production" name="production" placeholder="Enter Production in Tons" step="any" required>
+
+            <input type="number" id="yield" name="yield" placeholder="Enter yield in Tons" step="any" required>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit Data</button>
+
+        </form>
+
+        <!-- Flash messages for success or failure -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-message {{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Crop Management System. All rights reserved</p>
+        </div>
+    </footer>
+
+</body>
+</html>

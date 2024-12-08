@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1523349312806-f5dde0a01c32?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover; /* Ensure the image covers the entire viewport */
+            background-position: center; /* Keep the image centered */
+            background-attachment: fixed; /* Keeps background fixed during scrolling */
+            color: white;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background for readability */
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Welcome to the Crop Management System</h1>
+        <p class="text-center">Manage your crop data efficiently and get insights for better farming practices.</p>
+
+        <div class="row text-center mt-4">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Store Data</h5>
+                        <p class="card-text">Add your crop details to keep track of your farming data.</p>
+                        <a href="/store_data" class="btn btn-warning">Store Data</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Analyze Data</h5>
+                        <p class="card-text">Analyze crop data to gain valuable insights.</p>
+                        <a href="/analyze_data" class="btn btn-info">Analyze Data</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Modify data</h5>
+                        <p class="card-text">Modify your data available in the database.</p>
+                        <a href="/modify_data" class="btn btn-danger">Modify Data</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center mt-5">
+        <p>&copy; 2024 Crop Management System. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

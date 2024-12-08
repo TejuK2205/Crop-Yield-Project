@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyze Crop Data - Fresh Basket</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/store_data.css') }}">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://wallpaperaccess.com/full/3830826.jpg') no-repeat center/cover;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            text-align: left;
+            padding: 10px;
+        }
+
+        .back-button {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .container {
+            max-width: 1100px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            margin: 50px auto;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        h1, h2 {
+            font-family: 'Roboto', Arial;
+            color: #333;
+        }
+
+        .analysis-card {
+            padding: 15px;
+            margin: 10px 0;
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .flash-message {
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .flash-message.success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .flash-message.danger {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+        }
+
+        .analysis-section {
+            margin-bottom: 40px;
+        }
+
+        .analysis-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .analysis-img {
+            max-height: 500px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .col-md-6 {
+            flex: 0 0 48%;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h2 class="text-center mb-5">Data Analysis</h2>
+
+        <!-- Row 1: Two plots -->
+        <div class="row analysis-section">
+            <div class="col-md-6">
+                <h4 class="analysis-title">1. Average Yield per Crop per Season</h4>
+                <img src="data:image/png;base64,{{ analysis_results['avg_yield_plot'] }}" class="analysis-img">
+            </div>
+            <div class="col-md-6">
+                <h4 class="analysis-title">2. Total Area Under Different Crops</h4>
+                <img src="data:image/png;base64,{{ analysis_results['area_plot'] }}" class="analysis-img">
+            </div>
+        </div>
+
+        <!-- Row 2: Two plots -->
+        <div class="row analysis-section">
+            <div class="col-md-6">
+                <h4 class="analysis-title">3. Production vs Area for Each Crop</h4>
+                <img src="data:image/png;base64,{{ analysis_results['production_area_plot'] }}" class="analysis-img">
+            </div>
+            <div class="col-md-6">
+                <h4 class="analysis-title">4. Statewise Annual Rainfall</h4>
+                <img src="data:image/png;base64,{{ analysis_results['rainfall_plot'] }}" class="analysis-img">
+            </div>
+        </div>
+
+        <!-- Row 3: Two plots -->
+        <div class="row analysis-section">
+            <div class="col-md-6">
+                <h4 class="analysis-title">5. Average Yield vs Nitrogen Levels</h4>
+                <img src="data:image/png;base64,{{ analysis_results['nitrogen_yield_plot'] }}" class="analysis-img">
+            </div>
+            <div class="col-md-6">
+                <h4 class="analysis-title">6. Soil Moisture vs Yield</h4>
+                <img src="data:image/png;base64,{{ analysis_results['soil_moisture_plot'] }}" class="analysis-img">
+            </div>
+        </div>
+
+        <!-- Back to Home button -->
+        <div class="text-center">
+            <a href="{{ url_for('index') }}" class="btn">Back to Home</a>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
