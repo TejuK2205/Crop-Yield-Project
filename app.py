@@ -325,9 +325,33 @@ def modify_data():
 
     return render_template('modify_data.html', user_data=user_data, farmer_data=farmer_data)
 
+@app.route('/recommend', methods=['GET', 'POST'])
+def recommend_crops():
+
+    conn = get_db_connection()
+    cursor = conn.cursor(DictCursor)
+    conn = None
+    query = """SELECT * FROM crop_data WHERE soil_type=%s AND fertilizer_name=%s AND temperature=%s AND humidity=%s"""
+    cursor.execute(query, (soil_type, fertilizer_name, temperature, humidity))
+
+    result = cursor.fetchall()
+        # Process the result (recommendations)
+    recommendations = []
+    for row in result:
+        recommendations.append({
+            "crop": row[5],  # assuming crop name is in the 6th column (index 5)
+            "soil_type": row[3],
+            "fertilizer_name": row[8],
+            "temperature": row[2],
+            "humidity": row[1]
+        })
+
+    return recommendations
+
+    return render_template('recommend.html', recommendation=recommendation)
+
 @app.route('/logout')
 def logout():
-    session.pop('farmer_id', None)
     return redirect(url_for('login'))
 
 if __name__ == '__main__':

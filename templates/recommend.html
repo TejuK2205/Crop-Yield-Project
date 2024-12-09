@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1523349312806-f5dde0a01c32?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover; /* Ensure the image covers the entire viewport */
+            background-position: center; /* Keep the image centered */
+            background-attachment: fixed; /* Keeps background fixed during scrolling */
+            color: white;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background for readability */
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Crop Recommendation System</h1>
+        <form method="POST" action="{{ url_for('recommend_crops') }}">
+            <div class="form-group">
+                <label for="soil_type">Soil Type</label>
+                <input type="text" id="soil_type" name="soil_type" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="fertilizers">Fertilizer</label>
+                <input type="text" id="fertilizers" name="fertilizers" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="temperature">Temperature (°C)</label>
+                <input type="number" id="temperature" name="temperature" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="humidity">Humidity (%)</label>
+                <input type="number" id="humidity" name="humidity" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Get Recommendations</button>
+        </form>
+        
+        {% if recommendation %}
+            <div class="alert alert-info mt-3">
+                {{ recommendation }}
+            </div>
+        {% endif %}        
+    
+    </div>
+</body>
+</html>
+

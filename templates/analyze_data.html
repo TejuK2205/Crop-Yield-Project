@@ -142,18 +142,6 @@
             </div>
         </div>
 
-        <!-- Row 3: Two plots -->
-        <div class="row analysis-section">
-            <div class="col-md-6">
-                <h4 class="analysis-title">5. Average Yield vs Nitrogen Levels</h4>
-                <img src="data:image/png;base64,{{ analysis_results['nitrogen_yield_plot'] }}" class="analysis-img">
-            </div>
-            <div class="col-md-6">
-                <h4 class="analysis-title">6. Soil Moisture vs Yield</h4>
-                <img src="data:image/png;base64,{{ analysis_results['soil_moisture_plot'] }}" class="analysis-img">
-            </div>
-        </div>
-
         <!-- Back to Home button -->
         <div class="text-center">
             <a href="{{ url_for('index') }}" class="btn">Back to Home</a>

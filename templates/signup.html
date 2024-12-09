@@ -25,15 +25,6 @@
         <div class="signup-container col-md-4">
             <h2 class="text-center mb-4">Signup</h2>
 
-            <!-- Flash messages -->
-            {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                    {% for category, message in messages %}
-                        <div class="alert alert-{{ category }}">{{ message }}</div>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
-
             <!-- Signup Form -->
             <form method="POST">
                 <div class="mb-3">
