@@ -17,8 +17,8 @@ app.secret_key = 'aws_project'  # Used for flashing messages and session managem
 
 # MySQL connection details using PyMySQL
 db_config = {
-    'host': 'localhost',
-    'user': 'root',  # replace with your MySQL username
+    'host': 'database-2.chcjj1i2dmdd.us-east-1.rds.amazonaws.com',
+    'user': 'admin',  # replace with your MySQL username
     'password': 'Teju2205@',  # replace with your MySQL password
     'database': 'crop_yield_db'  # replace with your MySQL database name
 }
